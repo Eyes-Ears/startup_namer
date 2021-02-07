@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'find_activity_route/findactivity.dart';
-
+import 'package:startup_namer/constants.dart';
 
 class SecondScreen extends StatelessWidget {
   @override
@@ -60,7 +58,7 @@ class SecondScreen extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/FindNear');// Navigate back to fst screen when tapped.
+              Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
             },
             child:
             _buildButtonColumn(color, Icons.arrow_forward_rounded, 'FINDNEAR'),
@@ -68,10 +66,10 @@ class SecondScreen extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/findactivity.dart');
+              Navigator.pushNamed(context, activityRoute);
             },
             child:
-            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'FINDACTIVITY'),
+            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
           ),
 
           _buildButtonColumn(color, Icons.share, 'FINDTIME'),

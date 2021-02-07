@@ -4,11 +4,10 @@
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'router.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/widgets.dart';
-import 'package:startup_namer/find_activity_route/findactivity.dart';
-
-import 'secondpage.dart';
+import 'package:startup_namer/constants.dart';
 
 
 
@@ -23,12 +22,8 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.red,
         primaryColor: Colors.green,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => RandomWords(),
-        '/second': (context) => SecondScreen(),
-        '/findactivity': (context) => FindActivity()
-      },
+      onGenerateRoute: Routerr.generateRoute,
+      initialRoute: homeRoute,
     );
   }
 }
@@ -122,7 +117,7 @@ class _RandomWordsState extends State<RandomWords> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/second');
+          Navigator.pushNamed(context, secondRoute);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -130,7 +125,7 @@ class _RandomWordsState extends State<RandomWords> {
   }
 
 
-  //RANDOM WORK BUILDER
+  //RANDOM WORD BUILDER
   Widget _buildSuggestions() {
     return ListView.builder(
         padding: EdgeInsets.all(16.0),
