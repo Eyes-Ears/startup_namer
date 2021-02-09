@@ -79,6 +79,7 @@ class SecondScreen extends StatelessWidget {
 
     Widget textSection = Container(
       padding: const EdgeInsets.all(32),
+
       child: Text(
         'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
             'Alps. Situated 1,578 meters above sea level, it is one of the '

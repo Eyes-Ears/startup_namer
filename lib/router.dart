@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:startup_namer/find_activity_route/discover.dart';
+import 'package:startup_namer/find_activity_route/findactivity.dart';
 import 'package:startup_namer/secondpage.dart';
 import 'constants.dart';
-import 'find_activity_route/findactivity.dart';
 import 'main.dart';
 
 class Routerr {
@@ -13,6 +14,8 @@ class Routerr {
         return MaterialPageRoute(builder: (_) => SecondScreen());
       case activityRoute:
         return MaterialPageRoute(builder: (_) => FindActivity());
+      case discoverRoute:
+        return MaterialPageRoute(builder: (_) => Discover());
       default:
         return MaterialPageRoute(
             builder: (_) =>

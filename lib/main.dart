@@ -1,15 +1,9 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'router.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/widgets.dart';
 import 'package:startup_namer/constants.dart';
-
-
 
 void main() => runApp(MyApp());
 
@@ -28,6 +22,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//SAVED STATE BUILD
 class ScreenArguments {
   final String title;
   final String message;
@@ -166,3 +161,55 @@ class _RandomWordsState extends State<RandomWords> {
 }
 
 
+//TEXT INPUT FORM
+class MyCustomForm extends StatefulWidget {
+  @override
+  MyCustomFormState createState() {
+    return MyCustomFormState();
+  }
+}
+
+class MyCustomFormState extends State<MyCustomForm> {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  //
+  // Note: This is a GlobalKey<FormState>,
+  // not a GlobalKey<MyCustomFormState>.
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    // Build a Form widget using the _formKey created above.
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          TextFormField(
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Validate returns true if the form is valid, or false
+                // otherwise.
+                if (_formKey.currentState.validate()) {
+                  // If the form is valid, display a Snackbar.
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(content: Text('Processing Data')));
+                }
+              },
+              child: Text('Submit'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

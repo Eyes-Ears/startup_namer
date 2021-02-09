@@ -3,3 +3,4 @@
 const String homeRoute = '/';
 const String secondRoute = '/second';
 const String activityRoute = '/findactivity';
+const String discoverRoute = '/discover';

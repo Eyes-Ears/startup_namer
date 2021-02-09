@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:startup_namer/constants.dart';
+import 'package:startup_namer/main.dart';
 
 class FindActivity extends StatelessWidget {
   @override
@@ -16,14 +18,14 @@ class FindActivity extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Oeschinen Lake Campground',
+                    'New Campground',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Text(
-                  'Kandersteg, Switzerland',
+                  'Somewhere else',
                   style: TextStyle(
                     color: Colors.grey[700],
                   ),
@@ -33,7 +35,7 @@ class FindActivity extends StatelessWidget {
           ),
           /*3*/
           Icon(
-            Icons.star,
+            Icons.sanitizer_rounded,
             color: Colors.red[500],
           ),
           Text('41'),
@@ -57,7 +59,7 @@ class FindActivity extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/FindNear');// Navigate back to fst screen when tapped.
+              Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
             },
             child:
             _buildButtonColumn(color, Icons.arrow_forward_rounded, 'FINDNEAR'),
@@ -65,10 +67,10 @@ class FindActivity extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/FindActivity');
+              Navigator.pushNamed(context, discoverRoute);
             },
             child:
-            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'FINDACTIVITY'),
+            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
           ),
 
           _buildButtonColumn(color, Icons.share, 'FINDTIME'),
@@ -78,27 +80,19 @@ class FindActivity extends StatelessWidget {
 
     Widget textSection = Container(
       padding: const EdgeInsets.all(32),
-      child: Text(
-        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-            'Alps. Situated 1,578 meters above sea level, it is one of the '
-            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-            'half-hour walk through pastures and pine forest, leads you to the '
-            'lake, which warms to 20 degrees Celsius in the summer. Activities '
-            'enjoyed here include rowing, and riding the summer toboggan run.',
-        softWrap: true,
-      ),
+      child: MyCustomForm(),
     );
 
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Find Activity',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter layout demo'),
+          title: Text('findactivity.dart'),
         ),
         body: ListView(
           children: [
             Image.asset(
-              'images/lake.jpg',
+              "assets/images/BI1.jpg",
               width: 600,
               height: 240,
               fit: BoxFit.cover,
