@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:startup_namer/constants.dart';
 
-class FindActivity extends StatelessWidget {
+class PostAct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
@@ -17,14 +17,14 @@ class FindActivity extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'New Campground',
+                    'Oeschinen Lake Campground',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Text(
-                  'Somewhere else',
+                  'Kandersteg, Switzerland',
                   style: TextStyle(
                     color: Colors.grey[700],
                   ),
@@ -34,7 +34,7 @@ class FindActivity extends StatelessWidget {
           ),
           /*3*/
           Icon(
-            Icons.sanitizer_rounded,
+            Icons.star,
             color: Colors.red[500],
           ),
           Text('41'),
@@ -50,50 +50,50 @@ class FindActivity extends StatelessWidget {
         children: [
           GestureDetector(
               onTap: () {
-                Navigator.pop(context);// Navigate back to fst screen when tapped.
+                Navigator.pop(context,);// Navigate back to fst screen when tapped.
               },
               child:
-              _buildButtonColumn(color, Icons.arrow_back, 'GOBACK')
+              _buildButtonColumn(color, Icons.arrow_back, 'BACK')
           ),
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
+              Navigator.pushNamed(context, postLocation);
             },
             child:
-            _buildButtonColumn(color, Icons.arrow_forward_rounded, 'FINDNEAR'),
+            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'POSTLOCATION'),
           ),
+        ]
+      ),
+    );
 
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, discoverRoute);
-            },
-            child:
-            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
-          ),
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
 
-          _buildButtonColumn(color, Icons.share, 'FINDTIME'),
-        ],
+      child: Text(
+        "...PLACEHOLDER FOR INPUT TO DESCRIBE ACTIVITY",
+        softWrap: true,
       ),
     );
 
 
     return MaterialApp(
-      title: 'Find Activity',
+      title: 'PostAct',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('findactivity.dart'),
+          title: Text('Post Activity Screen'),
         ),
         body: ListView(
           children: [
             Image.asset(
-              "assets/images/BI1.jpg",
+              'assets/images/000437960006.jpg',
               width: 600,
               height: 240,
               fit: BoxFit.cover,
             ),
             titleSection,
             buttonSection,
+            textSection,
           ],
         ),
       ),

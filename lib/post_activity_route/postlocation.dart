@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../constants.dart';
 
-class Discover extends StatefulWidget {
+
+class PostLocation extends StatefulWidget {
   @override
-  _DiscoverState createState() => _DiscoverState();
+  _PostLocState createState() => _PostLocState();
 }
 
-class _DiscoverState extends State<Discover> {
+class _PostLocState extends State<PostLocation> {
   Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng _center = const LatLng(35.5950581, -82.5514869);
@@ -55,12 +57,12 @@ class _DiscoverState extends State<Discover> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Discover'),
+          title: Text('Post Location'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Colors.blue[700],
+          backgroundColor: Colors.deepPurpleAccent[700],
         ),
         body: Stack(
           children: <Widget>[
@@ -81,19 +83,27 @@ class _DiscoverState extends State<Discover> {
                 child: Column(
                   children: <Widget> [
                     FloatingActionButton(
-                      heroTag: "btn1",
+                      heroTag: "bt5",
                       onPressed: _onMapTypeButtonPressed,
                       materialTapTargetSize: MaterialTapTargetSize.padded,
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.deepPurpleAccent,
                       child: const Icon(Icons.map, size: 36.0),
                     ),
-                    SizedBox(height: 16.0),
+                    SizedBox(height: 20.0),
                     FloatingActionButton(
-                      heroTag: "btn2",
+                      heroTag: "btn6",
                       onPressed: _onAddMarkerButtonPressed,
                       materialTapTargetSize: MaterialTapTargetSize.padded,
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.deepPurple,
                       child: const Icon(Icons.add_location, size: 36.0),
+                    ),
+                    SizedBox(height: 20.0),
+                    FloatingActionButton(
+                      heroTag: "btn7",
+                      onPressed: () => Navigator.pushNamed(context, postDetails),
+                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                      backgroundColor: Colors.deepPurple,
+                      child: const Icon(Icons.navigate_next_rounded, size: 36.0),
                     ),
                   ],
                 ),

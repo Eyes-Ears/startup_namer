@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'router.dart';
+import 'package:startup_namer/router.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/widgets.dart';
 import 'package:startup_namer/constants.dart';
@@ -105,17 +105,33 @@ class _RandomWordsState extends State<RandomWords> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        color: Colors.blueAccent,
-        child: Container(
-          height: 50.0,
+        color: Colors.white,
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton.extended(
+              heroTag: "btn4",
+              splashColor: Colors.amber,
+              onPressed: () {
+                Navigator.pushNamed(context, postAct);
+              },
+              label: Text('Post Activity'),
+              icon: Icon(Icons.av_timer),
+              backgroundColor: Colors.redAccent,
+            ),
+            FloatingActionButton.extended(
+              heroTag: "btn3",
+              onPressed: () {
+                Navigator.pushNamed(context, nearRoute);
+              },
+              label: Text('Find Activity'),
+              icon: Icon(Icons.account_circle),
+              backgroundColor: Colors.green,
+            ),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, secondRoute);
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -156,60 +172,6 @@ class _RandomWordsState extends State<RandomWords> {
           }
         });
       },
-    );
-  }
-}
-
-
-//TEXT INPUT FORM
-class MyCustomForm extends StatefulWidget {
-  @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
-  }
-}
-
-class MyCustomFormState extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false
-                // otherwise.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

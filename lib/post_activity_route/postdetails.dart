@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:startup_namer/constants.dart';
 
-class SecondScreen extends StatelessWidget {
+class PostDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
@@ -17,14 +17,14 @@ class SecondScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Oeschinen Lake Campground',
+                    'POST DETAILS PAGE',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Text(
-                  'Kandersteg, Switzerland',
+                  'POST DETAILS DETAILS',
                   style: TextStyle(
                     color: Colors.grey[700],
                   ),
@@ -58,21 +58,11 @@ class SecondScreen extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
-            },
-            child:
-            _buildButtonColumn(color, Icons.arrow_forward_rounded, 'FINDNEAR'),
-          ),
-
-          GestureDetector(
-            onTap: () {
               Navigator.pushNamed(context, activityRoute);
             },
             child:
             _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
           ),
-
-          _buildButtonColumn(color, Icons.share, 'FINDTIME'),
         ],
       ),
     );
@@ -81,12 +71,11 @@ class SecondScreen extends StatelessWidget {
       padding: const EdgeInsets.all(32),
 
       child: Text(
-        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-            'Alps. Situated 1,578 meters above sea level, it is one of the '
-            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-            'half-hour walk through pastures and pine forest, leads you to the '
-            'lake, which warms to 20 degrees Celsius in the summer. Activities '
-            'enjoyed here include rowing, and riding the summer toboggan run.',
+        'DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS'
+            ' DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS '
+            'DETAILS DETAILS DETAILS DETAILS '
+            'DETAILS DETAILS '
+            'DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS ',
         softWrap: true,
       ),
     );
@@ -95,12 +84,12 @@ class SecondScreen extends StatelessWidget {
       title: 'Flutter layout demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter layout demo'),
+          title: Text('POST DETAILS'),
         ),
         body: ListView(
           children: [
             Image.asset(
-              'assets/images/lake.jpg',
+              'assets/images/PostActPic.jpg',
               width: 600,
               height: 240,
               fit: BoxFit.cover,
