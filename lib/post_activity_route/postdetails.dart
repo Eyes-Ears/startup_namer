@@ -50,7 +50,7 @@ class PostDetails extends StatelessWidget {
         children: [
           GestureDetector(
               onTap: () {
-                Navigator.pop(context);// Navigate back to fst screen when tapped.
+                Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
               },
               child:
               _buildButtonColumn(color, Icons.arrow_back, 'GOBACK')

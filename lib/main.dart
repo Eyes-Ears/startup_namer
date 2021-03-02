@@ -1,9 +1,9 @@
-import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:startup_namer/router.dart';
-import 'package:english_words/english_words.dart';
 import 'package:flutter/widgets.dart';
 import 'package:startup_namer/constants.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startup Name Gen',
+      title: 'WANNI',
       theme: ThemeData(
         accentColor: Colors.red,
         primaryColor: Colors.green,
@@ -22,156 +22,110 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//SAVED STATE BUILD
-class ScreenArguments {
-  final String title;
-  final String message;
-  ScreenArguments(this.title, this.message);
-}
-
-class RandomWords extends StatefulWidget {
+class Discover extends StatefulWidget {
   @override
-  _RandomWordsState createState() => _RandomWordsState();
+  _DiscoverState createState() => _DiscoverState();
 }
 
-class _RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _saved = Set<WordPair>();
-  final _biggerFont = TextStyle(fontSize: 18.0);
-  void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          final tiles = _saved.map((WordPair pair) {
-            return ListTile(
-              title: Text(
-                pair.asPascalCase,
-                style: _biggerFont,
-              ),
-            );
-          });
-          final divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Saved Suggestions'),
-            ),
-            body: ListView(children: divided),
-          );
-        },
-      ),
-    );
+class _DiscoverState extends State<Discover> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static const LatLng _center = const LatLng(35.5950581, -82.5514869);
+
+  final Set<Marker> _markers = {};
+
+  LatLng _lastMapPosition = _center;
+
+  MapType _currentMapType = MapType.normal;
+
+  void _onMapTypeButtonPressed() {
+    setState(() {
+      _currentMapType = _currentMapType == MapType.normal
+          ? MapType.satellite
+          : MapType.normal;
+    });
   }
 
+  void _onAddMarkerButtonPressed() {
+    setState(() {
+      _markers.add(Marker(
+        // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(_lastMapPosition.toString()),
+        position: _lastMapPosition,
+        infoWindow: InfoWindow(
+          title: 'Really cool place',
+          snippet: '5 Star Rating',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ));
+    });
+  }
 
+  void _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Drawer Header'),
-        actions: [
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-        ],
-      ),
-      body: _buildSuggestions(),
-      backgroundColor: Colors.white,
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('WANNI'),
+          backgroundColor: Colors.blue[700],
+        ),
+        body: Stack(
           children: <Widget>[
-            DrawerHeader(
-              child: Text('some text'),
-              decoration: BoxDecoration(
-                color: Colors.amber,
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
+              ),
+              mapType: _currentMapType,
+              markers: _markers,
+              onCameraMove: _onCameraMove,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Row(
+                  children: <Widget> [
+                    FloatingActionButton(
+                      heroTag: "btn1",
+                      onPressed: _onMapTypeButtonPressed,
+                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                      backgroundColor: Colors.green,
+                      child: const Icon(Icons.map, size: 36.0),
+                    ),
+                    SizedBox(width: 25.0),
+                    FloatingActionButton(
+                      heroTag: "btn2",
+                      onPressed: _onAddMarkerButtonPressed,
+                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                      backgroundColor: Colors.green,
+                      child: const Icon(Icons.add_location, size: 36.0),
+                    ),
+                    SizedBox (width: 25.0),
+                    FloatingActionButton(
+                      heroTag: "btn9",
+                      onPressed: () => Navigator.pushNamed(context, postDetails),
+                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                      backgroundColor: Colors.green,
+                      child: const Icon(Icons.add_comment_outlined, size: 36.0),
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: Colors.white,
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FloatingActionButton.extended(
-              heroTag: "btn4",
-              splashColor: Colors.amber,
-              onPressed: () {
-                Navigator.pushNamed(context, postAct);
-              },
-              label: Text('Post Activity'),
-              icon: Icon(Icons.av_timer),
-              backgroundColor: Colors.redAccent,
-            ),
-            FloatingActionButton.extended(
-              heroTag: "btn3",
-              onPressed: () {
-                Navigator.pushNamed(context, nearRoute);
-              },
-              label: Text('Find Activity'),
-              icon: Icon(Icons.account_circle),
-              backgroundColor: Colors.green,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-
-  //RANDOM WORD BUILDER
-  Widget _buildSuggestions() {
-    return ListView.builder(
-        padding: EdgeInsets.all(16.0),
-        itemBuilder: /*1*/ (context, i) {
-          if (i.isOdd) return Divider(); /*2*/
-
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-          }
-          return _buildRow(_suggestions[index]);
-        });
-  }
-
-  //WORD PAIR BUILDER
-  Widget _buildRow(WordPair pair) {
-    final alreadySaved = _saved.contains(pair);
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
-      onTap: () {
-        setState(() {
-          if (alreadySaved) {
-            _saved.remove(pair);
-          } else {
-            _saved.add(pair);
-          }
-        });
-      },
     );
   }
 }
+

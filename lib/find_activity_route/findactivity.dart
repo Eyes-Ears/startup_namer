@@ -66,7 +66,7 @@ class FindActivity extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, discoverRoute);
+              Navigator.pushNamed(context, homeRoute);
             },
             child:
             _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
