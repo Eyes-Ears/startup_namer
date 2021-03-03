@@ -1,126 +1,122 @@
 import 'package:flutter/material.dart';
-import 'package:startup_namer/constants.dart';
 
-class PostDetails extends StatelessWidget {
+class PostDetails extends StatefulWidget {
+  @override
+  _PostDetailsState createState() => _PostDetailsState();
+}
+
+class _PostDetailsState extends State<PostDetails> {
+  bool _checked = false;
+  bool _checkedbi = false;
+  bool _checkedru = false;
+  bool _checkedsw = false;
+  bool _checkedsu = false;
+  bool _checkedka = false;
+  bool _checkedca = false;
+  bool _checkedfl = false;
+
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: [
-          Expanded(
-            /*1*/
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /*2*/
-                Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    'POST DETAILS PAGE',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Text(
-                  'POST DETAILS DETAILS',
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          /*3*/
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text('41'),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Checkboxes Demo'),
       ),
-    );
-
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, homeRoute);// Navigate back to fst screen when tapped.
-              },
-              child:
-              _buildButtonColumn(color, Icons.arrow_back, 'GOBACK')
-          ),
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, activityRoute);
-            },
-            child:
-            _buildButtonColumn(color, Icons.keyboard_arrow_right_outlined, 'DISCOVER'),
-          ),
-        ],
-      ),
-    );
-
-    Widget textSection = Container(
-      padding: const EdgeInsets.all(32),
-
-      child: Text(
-        'DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS'
-            ' DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS '
-            'DETAILS DETAILS DETAILS DETAILS '
-            'DETAILS DETAILS '
-            'DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS ',
-        softWrap: true,
-      ),
-    );
-
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('POST DETAILS'),
-        ),
-        body: ListView(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             Image.asset(
-              'assets/images/PostActPic.jpg',
+              'assets/images/what kind of fun are you having?.png',
               width: 600,
               height: 240,
               fit: BoxFit.cover,
             ),
-            titleSection,
-            buttonSection,
-            textSection,
-          ],
-        ),
-      ),
-    );
-  }
-
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
+            Column(
+              children: <Widget>[
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Rock Climbing'),
+                  value: _checked,
+                  onChanged: (value) {
+                    setState(() {
+                      _checked = !_checked;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Biking'),
+                  value: _checkedbi,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedbi = !_checkedbi;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Running'),
+                  value: _checkedru,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedru = !_checkedru;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Swimming'),
+                  value: _checkedsw,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedsw = !_checkedsw;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Surfing'),
+                  value: _checkedsu,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedsu = !_checkedsu;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Kayaking'),
+                  value: _checkedka,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedka = !_checkedka;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Canoeing'),
+                  value: _checkedca,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedca = !_checkedca;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Flying'),
+                  value: _checkedfl,
+                  onChanged: (value) {
+                    setState(() {
+                      _checkedfl = !_checkedfl;
+                    });
+                  },
+                ),
+              ],
             ),
-          ),
+          ]
         ),
-      ],
+      )
     );
   }
 }
