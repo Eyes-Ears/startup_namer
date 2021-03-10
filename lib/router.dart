@@ -4,6 +4,7 @@ import 'package:startup_namer/find_activity_route/findactivity.dart';
 import 'package:startup_namer/main.dart';
 import 'package:startup_namer/post_activity_route/postdetails.dart';
 import 'package:startup_namer/post_activity_route/postlocation.dart';
+import 'package:startup_namer/post_activity_route/postpace.dart';
 import 'constants.dart';
 
 class Routerr {
@@ -19,6 +20,8 @@ class Routerr {
         return MaterialPageRoute(builder: (_) => PostLocation());
       case postDetails:
         return MaterialPageRoute(builder: (_) => PostDetails());
+      case postPace:
+        return MaterialPageRoute(builder: (_) => PostPace());
       default:
         return MaterialPageRoute(
             builder: (_) =>

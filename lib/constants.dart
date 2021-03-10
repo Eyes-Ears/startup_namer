@@ -6,3 +6,4 @@ const String activityRoute = '/find_activity_route/findactivity';
 const String postAct = '/post_activity_route/postact';
 const String postLocation = '/post_activity_route/postlocation';
 const String postDetails = '/post_activity_route/postdetails';
+const String postPace = '/post_activity_route/postpace';

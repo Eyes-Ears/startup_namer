@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../constants.dart';
+import 'package:startup_namer/constants.dart';
 
 
 class PostLocation extends StatefulWidget {
