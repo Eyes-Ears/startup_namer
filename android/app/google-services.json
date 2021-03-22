@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "20479221527",
+    "project_id": "wanni-fadb6",
+    "storage_bucket": "wanni-fadb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20479221527:android:c04be28f7e9c493e6aa152",
+        "android_client_info": {
+          "package_name": "com.tjohnsonco.wanni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20479221527-evf70l7cqi4agkha6cvs8m9hnp2ojac1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXSJ7rcaVaaMX4RaA2CabufrpZGMSgrCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20479221527-evf70l7cqi4agkha6cvs8m9hnp2ojac1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

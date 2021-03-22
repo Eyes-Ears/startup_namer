@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:startup_namer/constants.dart';
+import 'package:startup_namer/shared/constants.dart';
 
 class FindNear extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:startup_namer/constants.dart';
+import 'package:startup_namer/shared/constants.dart';
 
 
 class PostLocation extends StatefulWidget {
@@ -99,7 +99,7 @@ class _PostLocState extends State<PostLocation> {
                     SizedBox(height: 20.0),
                     FloatingActionButton(
                       heroTag: "btn7",
-                      onPressed: () => Navigator.pushNamed(context, postDetails),
+                      onPressed: () => Navigator.pushNamed(context, homeRoute),
                       materialTapTargetSize: MaterialTapTargetSize.padded,
                       backgroundColor: Colors.deepPurple,
                       child: const Icon(Icons.navigate_next_rounded, size: 36.0),

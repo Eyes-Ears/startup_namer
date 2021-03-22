@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:startup_namer/constants.dart';
+import 'package:startup_namer/shared/constants.dart';
 
 class PostDetails extends StatefulWidget {
   @override
@@ -7,6 +7,8 @@ class PostDetails extends StatefulWidget {
 }
 
 class _PostDetailsState extends State<PostDetails> {
+
+
   bool _checked = false;
   bool _checkedbi = false;
   bool _checkedru = false;
@@ -16,6 +18,8 @@ class _PostDetailsState extends State<PostDetails> {
   bool _checkedca = false;
   bool _checkedfl = false;
   bool _checkednf = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +135,8 @@ class _PostDetailsState extends State<PostDetails> {
           elevation: 3.0,
           backgroundColor: Colors.blue,
           child: new Icon(Icons.arrow_forward_ios_sharp),
-          onPressed: () => Navigator.pushNamed(context, postPace)),
+          onPressed: () => Navigator.pushNamed(context, postPace)
+          ),
     );
   }
 }

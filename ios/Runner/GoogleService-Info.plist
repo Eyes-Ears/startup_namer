@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>20479221527-6v9r3r1tt2966ahosdboep8jasl3l6s1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.20479221527-6v9r3r1tt2966ahosdboep8jasl3l6s1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAB66xU5eh99i6K_0-5NriuLBatxYdE1Qo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>20479221527</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tjohnsonco.wanni</string>
+	<key>PROJECT_ID</key>
+	<string>wanni-fadb6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wanni-fadb6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:20479221527:ios:3c38f5f91cef9f0f6aa152</string>
+</dict>
+</plist>
