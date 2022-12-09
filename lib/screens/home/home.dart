@@ -8,11 +8,7 @@ import 'package:startup_namer/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
-
-
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Discover();
@@ -31,36 +27,7 @@ class _DiscoverState extends State<Discover> {
 
   final Set<Marker> _markers = {};
 
-  LatLng _lastMapPosition = _center;
-
   MapType _currentMapType = MapType.normal;
-
-  void _onMapTypeButtonPressed() {
-    setState(() {
-      _currentMapType = _currentMapType == MapType.normal
-          ? MapType.satellite
-          : MapType.normal;
-    });
-  }
-
-  void _onAddMarkerButtonPressed() {
-    setState(() {
-      _markers.add(Marker(
-        // This marker id can be anything that uniquely identifies each marker.
-        markerId: MarkerId(_lastMapPosition.toString()),
-        position: _lastMapPosition,
-        infoWindow: InfoWindow(
-          title: 'Really cool place',
-          snippet: '5 Star Rating',
-        ),
-        icon: BitmapDescriptor.defaultMarker,
-      ));
-    });
-  }
-
-  void _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
-  }
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
@@ -75,19 +42,18 @@ class _DiscoverState extends State<Discover> {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: Text('home.dart'),
-            backgroundColor: Colors.blue[700],
-            actions: <Widget>[
-              FlatButton.icon(
-                icon: Icon(Icons.person),
-                label: Text('logoout'),
-                color: Colors.white,
-                onPressed: () async {
-                  await _auth.signOut();
-                },
-              ),
-            ]
-          ),
+              title: Text('home.dart'),
+              backgroundColor: Colors.blue[700],
+              actions: <Widget>[
+                FlatButton.icon(
+                  icon: Icon(Icons.person),
+                  label: Text('logoout'),
+                  color: Colors.white,
+                  onPressed: () async {
+                    await _auth.signOut();
+                  },
+                ),
+              ]),
           body: Stack(
             children: <Widget>[
               GoogleMap(
@@ -98,36 +64,21 @@ class _DiscoverState extends State<Discover> {
                 ),
                 mapType: _currentMapType,
                 markers: _markers,
-                onCameraMove: _onCameraMove,
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Row(
-                    children: <Widget> [
-                      FloatingActionButton(
-                        heroTag: "btn1",
-                        onPressed: _onMapTypeButtonPressed,
-                        materialTapTargetSize: MaterialTapTargetSize.padded,
-                        backgroundColor: Colors.green,
-                        child: const Icon(Icons.map, size: 36.0),
-                      ),
-                      SizedBox(width: 25.0),
-                      FloatingActionButton(
-                        heroTag: "btn2",
-                        onPressed: _onAddMarkerButtonPressed,
-                        materialTapTargetSize: MaterialTapTargetSize.padded,
-                        backgroundColor: Colors.green,
-                        child: const Icon(Icons.add_location, size: 36.0),
-                      ),
-                      SizedBox (width: 25.0),
+                    children: <Widget>[
                       FloatingActionButton(
                         heroTag: "btn9",
-                        onPressed: () => Navigator.pushNamed(context, postDetails),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, postDetails),
                         materialTapTargetSize: MaterialTapTargetSize.padded,
-                        backgroundColor: Colors.green,
-                        child: const Icon(Icons.add_comment_outlined, size: 36.0),
+                        backgroundColor: Colors.red,
+                        child:
+                            const Icon(Icons.arrow_forward_rounded, size: 36.0),
                       ),
                     ],
                   ),
